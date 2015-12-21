@@ -29,6 +29,15 @@ private InfDB infDB;
                 {
                     System.out.println(e.getMessage());
                 }
+        try
+        {
+            infDB = new InfDB("C:\\Users\\TP300LA-C4034\\Desktop\\Delkurs 4, Lill-supen\\InformatikDB\\MICEDB.FDB");
+            System.out.println("Uppkopplingen lyckades");
+        }
+        catch(InfException e)
+                {
+                    System.out.println(e.getMessage());
+                }
     }
 
     /**
