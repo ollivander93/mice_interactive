@@ -20,6 +20,7 @@ private InfDB infDB;
         initComponents();
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.white);
+        //Karl
         try
         {
             infDB = new InfDB("\\Users\\Oliver\\Documents\\Skola\\Mini_sup\\Realisering\\MICEDB.FDB");
