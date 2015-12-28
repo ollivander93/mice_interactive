@@ -1,9 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The Log in window. Takes a username and a password to log in to the 
+ * system. 
  */
 package mice_interactive;
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -20,7 +20,7 @@ private InfDB infDB;
         initComponents();
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.white);
-        //Karl
+
         try
         {
             infDB = new InfDB("\\Users\\Oliver\\Documents\\Skola\\Mini_sup\\Realisering\\MICEDB.FDB");
@@ -55,7 +55,6 @@ private InfDB infDB;
         jlUsername = new javax.swing.JLabel();
         jlPassword = new javax.swing.JLabel();
         btnSignIn = new javax.swing.JButton();
-        jrbtwnAdministrator = new javax.swing.JRadioButton();
         jlSignInLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,6 +71,11 @@ private InfDB infDB;
                 pfPasswordMouseClicked(evt);
             }
         });
+        pfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pfPasswordKeyPressed(evt);
+            }
+        });
 
         tfUsername.setText("Username");
         tfUsername.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -85,8 +89,10 @@ private InfDB infDB;
             }
         });
 
+        jlUsername.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlUsername.setText("Username:");
 
+        jlPassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlPassword.setText("Password:");
 
         btnSignIn.setText("Sign in");
@@ -96,8 +102,6 @@ private InfDB infDB;
             }
         });
 
-        jrbtwnAdministrator.setText("Administrator");
-
         jlSignInLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mice_interactive/MICE_SignIn_Logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,37 +110,31 @@ private InfDB infDB;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlSignInLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tfUsername)
+                                .addComponent(jlPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pfPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfUsername)
-                    .addComponent(jlPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pfPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
-                .addGap(74, 74, 74)
-                .addComponent(jrbtwnAdministrator)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jlSignInLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addComponent(jlSignInLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jlPassword)
-                    .addComponent(jrbtwnAdministrator))
+                .addGap(26, 26, 26)
+                .addComponent(jlPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
@@ -178,8 +176,9 @@ private InfDB infDB;
         if(signIn())
         {
             setVisible(false);
-            SigningIn signingIn = new SigningIn();
-            signingIn.setVisible(true);
+            StartScreen startScreen = new StartScreen();
+            startScreen.setVisible(true);
+            
         }
         else
         {
@@ -187,6 +186,23 @@ private InfDB infDB;
             System.out.println("Felaktigt");
         }
     }//GEN-LAST:event_btnSignInMouseClicked
+
+    private void pfPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPasswordKeyPressed
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+       {
+        if(signIn())
+       {
+            setVisible(false);
+            StartScreen startScreen = new StartScreen();
+            startScreen.setVisible(true); 
+       }
+           else
+          {
+            infoBox("Wrong password or username", "Error:");
+            System.out.println("Felaktigt");
+          }
+       }
+    }//GEN-LAST:event_pfPasswordKeyPressed
     
     private boolean signIn()
     {
@@ -264,7 +280,6 @@ private InfDB infDB;
     private javax.swing.JLabel jlPassword;
     private javax.swing.JLabel jlSignInLogo;
     private javax.swing.JLabel jlUsername;
-    private javax.swing.JRadioButton jrbtwnAdministrator;
     private javax.swing.JPasswordField pfPassword;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
