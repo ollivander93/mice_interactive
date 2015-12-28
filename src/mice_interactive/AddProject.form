@@ -37,23 +37,19 @@
                               <Component id="jLabel1" alignment="0" pref="124" max="32767" attributes="0"/>
                           </Group>
                           <Component id="lblStartDate" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
-                          <Component id="jdtStartDate" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel3" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Component id="jdtEndDate" min="-2" pref="189" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="199" max="32767" attributes="0"/>
+                              <Component id="jLabel3" min="-2" pref="115" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="273" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel2" min="-2" pref="124" max="-2" attributes="0"/>
                                   <Component id="tfProjectLead" min="-2" pref="124" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="264" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -86,16 +82,11 @@
                   <Component id="tfProjectLead" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStartDate" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jdtEndDate" pref="30" max="32767" attributes="0"/>
-                  <Component id="jdtStartDate" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
               <Component id="lblPlatforms" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -145,10 +136,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add project"/>
       </Properties>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jdtStartDate">
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jdtEndDate">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
