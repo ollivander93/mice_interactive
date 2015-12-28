@@ -5,6 +5,8 @@
  */
 package mice_interactive;
 
+import java.awt.Color;
+
 /**
  *
  * @author Oliver
@@ -16,6 +18,9 @@ public class StartScreen extends javax.swing.JFrame {
      */
     public StartScreen() {
         initComponents();
+        setLocationRelativeTo(null);
+
+        
     }
 
     /**
@@ -30,10 +35,16 @@ public class StartScreen extends javax.swing.JFrame {
         btnAddProject = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(59, 64, 141));
 
         btnAddProject.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnAddProject.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mice_interactive/Button-Add-icon.png"))); // NOI18N
         btnAddProject.setText("Add a new project");
+        btnAddProject.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddProjectMouseClicked(evt);
+            }
+        });
         btnAddProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddProjectActionPerformed(evt);
@@ -45,16 +56,15 @@ public class StartScreen extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(btnAddProject, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(775, Short.MAX_VALUE))
+                .addGap(0, 680, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(182, 182, 182)
                 .addComponent(btnAddProject, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(410, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         pack();
@@ -63,6 +73,11 @@ public class StartScreen extends javax.swing.JFrame {
     private void btnAddProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProjectActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddProjectActionPerformed
+
+    private void btnAddProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProjectMouseClicked
+        AddProject addProject = new AddProject();
+        addProject.setVisible(true);
+    }//GEN-LAST:event_btnAddProjectMouseClicked
 
     /**
      * @param args the command line arguments
